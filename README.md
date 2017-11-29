@@ -2,7 +2,7 @@
 
 There are a few custom signup flows included in the single parent homepage here. These templates and partials can be included in your 3scale portal individually or altogether depending on which flows you want to enable in your portal.
 
-#### Flow 1
+### Flow 1
 
 Multiple apps flow. This is a simple signup flow that allows any public users to signup directly to multiple services and the associated application plans. The user does not need an account prior to signup. The Mutliple Applications feature needs to be enabled on the Developer portal to use this flow.
 
