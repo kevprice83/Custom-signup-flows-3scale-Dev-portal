@@ -2,8 +2,6 @@ Dynamic 3scale Developer Portal signup templates
 ================================================
 There are 4 custom signup flows included in the [parent homepage](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-index-html-liquid). These flows are included into the homepage using Liquid tags such as `{% include 'partial name' %}` because the flows are separated out into individual partials. The partials can be included in your 3scale portal individually or all together depending on which flows you want to enable in your portal and for ease of switching between flows as and when needed.
 
----
-
 How does the 3scale signup work?
 --------------------------------
 ### The Basics
@@ -29,7 +27,7 @@ The Application object has 1:1 relationship to a Service via an Application Plan
 The Account object can be subscribed to many Services in 3scale and is able to access those Services via the Service Plan -- we use this only to manage the APIs the Account has access to -- as an admin user you will see these subscriptions in the Admin portal as a list of Service Subscriptions.
 
 The Signup Flows
----------
+----------------
 ### Single Application Flow
 This is the simplest signup flow that only allows a signup to a single Service and Application Plan upon account creation. No features need to be enabled in the 3scale Developer portal to use this flow. Just include the [single app partial](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-_single_app_signup_form-html-liquid) from your [homepage](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-index-html-liquid) with: `{% include '<PARTIAL_NAME>' %}`.
 
