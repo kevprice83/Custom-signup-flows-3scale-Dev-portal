@@ -59,7 +59,7 @@ Additional points
 -----------------
 
 ### Demos & Workshops
-These templates can be used in conjunction with one another if you're demoing the 3scale Developer Portal and the potential it has. Having the 4 different flows extracted into separate partials makes it very easy to manage and once the test Account & User is set up for demo purposes this should result in a pretty slick demo.
+These templates can be used in conjunction with one another if you're demoing the 3scale Developer Portal and the potential it has. Having the 4 different flows extracted into separate partials makes it very easy to manage and once the test Account & User is set up for demo purposes this should result in a very easy to execute demo.
 
 ### JavaScript functions
 There are some custom snippets of JavaScript in a few of the templates also. 
