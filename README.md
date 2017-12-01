@@ -33,7 +33,7 @@ The Signup Flows
 ### Single Application Flow
 This is the simplest signup flow that only allows a signup to a single Service and Application Plan upon account creation. No features need to be enabled in the 3scale Developer portal to use this flow. Just include the [single app partial](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-_single_app_signup_form-html-liquid) from your [homepage](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-index-html-liquid) with: `{% include '<PARTIAL_NAME>' %}`.
 
-### Multiple Application flow
+### Multiple Application Flow
 This is a fairly simple signup flow that allows any public users to signup directly to multiple services and the associated Application Plans in just one sign up form. The user does not need an account prior to the signup as we want the Services to be publicly available. The Multiple Applications feature -- *Developer portal > Feature visibility* -- needs to be enabled on the Developer portal to use this flow. Use the [multiple apps partial](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-_mulitple_app_signup_form-html-liquid) and call it from the 
 [homepage](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-index-html-liquid) as so: `{% include '<PARTIAL_NAME>' %}`.
 
@@ -54,3 +54,30 @@ This flow is most useful when like in the Custom Fields Flow you want to control
 - Create a new Section for each Group under *Developer portal > Content* and select "New section" from the dropdown menu. Set the partial path to something that would also be contained as a substring of the Feature `system_name` created previously. It is the string values of these two attributes that will be compared to control the subscription forms the user is presented with.
 
 Finally include the [group membership partial](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-_group_membership_plans-html-liquid) in the 3scale CMS and as with the previous flows call it from the homepage.
+
+Additional points
+-----------------
+
+### Demos & Workshops
+These templates can be used in conjunction with one another if you're demoing the 3scale Developer Portal and the potential it has. Having the 4 different flows extracted into separate partials makes it very easy to manage and once the test Account & User is set up for demo purposes this should result in a pretty slick demo.
+
+### JavaScript functions
+There are some custom snippets of JavaScript in a few of the templates also. 
+The following function `subscribeApp` passes the necessary parameters to the *application new form* so that the Application can be created directly after the Plan is selected. The default behaviour otherwise would be then to redirect the user to select the Service under which they want to create the Application.
+
+```
+function subscribeApp(serviceId, planId) {
+      window.location.href = '/admin/applications/new?service_id=' + serviceId + '&plan_id=' + planId;
+}
+```
+
+`redirectUser` function is required to redirect from the [applications index page](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-_applications_index-html-liquid) to the page defined in the function on the [layout template](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-l_main_layout-html-liquid). When a User first logs in the portal redirects them to the *applications index* view but if they haven't created any Application(s) yet this will feel a bit broken or strange and this custom redirect improves the UX a little.
+
+```
+function redirectUser() {
+    // This redirect can be set to any page you wish. The default is the homepage.
+    window.location.href="/"
+};
+```
+
+I hope this gist is useful and please leave any comments or suggestions if you have any issues or improvements.
