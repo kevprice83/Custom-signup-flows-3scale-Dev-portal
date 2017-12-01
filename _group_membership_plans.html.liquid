@@ -8,8 +8,9 @@
             {% assign sections = current_user.sections %} 
           	{% for service in provider.services %} 
           		{% for section in sections %} 
-          		{% assign cleanedsection = section | remove_first: "/" %} 
-          		{% if service.system_name contains cleanedsection %} 
+          		{% assign cleanedsection = section | remove_first: "/" %}
+              {% for feature in service.features %}
+          		{% if feature.system_name contains cleanedsection %} 
           			{% for plan in service.application_plans %}
 
             <div class="col-md-6">
@@ -53,9 +54,12 @@
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-md-12">
-      
-                   <button type="button" class="btn btn-success pull-right" onclick="subscribeMe('{{plan.service.system_name}}', '{{plan.id}}')">Signup to plan {{ plan.name }}</button>
-                   <a href="/admin/service_contracts/new?service_id={{service.id}}" class="btn btn-success pull-right">Signup to plan {{ plan.name }}</a>                                                              
+                              
+                              {% if service.subscription %}
+                                <button type="button" class="btn btn-success pull-right" onclick="subscribeApp('{{plan.service.system_name}}', '{{plan.id}}')">Signup to plan {{ plan.name }}</button>
+                              {% else %}
+                                <a href="/admin/service_contracts/new?service_id={{service.id}}" class="btn btn-success pull-right">Subscribe to the {{ service.name }} service</a>
+                              {% endif %}                                                      
                           </div>
                         </div>
 
@@ -71,7 +75,8 @@
           		{% endcomment %}
           
           		{% endif %} 
-          		{% endfor %} 
+          		{% endfor %}
+              {% endfor %}
           {% endfor %}
 
 
@@ -79,7 +84,7 @@
     </div>
 </section>
 <script>
-	function subscribeMe(serviceId, planId) {
+	function subscribeApp(serviceId, planId) {
         window.location.href = '/admin/applications/new?service_id=' + serviceId + '&plan_id=' + planId;
   }
 

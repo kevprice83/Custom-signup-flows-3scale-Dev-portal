@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-<!-- 
-    Special thanks to UX designer Xiaoying Riley at 3rd Wave Media for making devAid free under the Creative Commons Attribution 3.0 License (CC BY 3.0) 
--->
 
 <head>
   <meta charset="utf-8">
@@ -18,7 +14,6 @@
   
     <!--<link rel="stylesheet" type="text/css" href="/css/custom.css">-->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/css/devaid.css">
 
     <!-- fonts -->
     {{ 'https://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' | stylesheet_link_tag }}
@@ -51,33 +46,10 @@
   <header>
     {% logo %}
   </header>
-  	<!--<script type="text/javascript">
-
-      function redirectUser() {
-          // var params = [];
-          var service = "service=";
-          // var planId = "planId=";
-          var ca = document.cookie.split(';');
-          for(var i = 0; i < ca.length; i++) {
-              var c = ca[i];
-              while (c.charAt(0) == ' ') {
-                  c = c.substring(1);
-              }
-              if (c.indexOf(service) == 0) {
-                  var serviceName = c.substring(service.length, c.length);
-                  window.location.href = '/plans?service=' + serviceName;
-                  return;
-              } 
-          }
-          return "";
-        };
-
-	</script>-->
   <script type="text/javascript">
 
       function redirectUser() {
-          //var redirect = window.location.href.split('/')
-          //var currentPage = redirect[redirect.length - 1]
+          // This redirect can be set to any page you wish. The default is the homepage.
           window.location.href="/"
       };
 
