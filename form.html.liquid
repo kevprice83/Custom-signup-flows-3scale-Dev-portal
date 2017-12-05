@@ -1,12 +1,7 @@
-{% assign params = request.request_uri | split: 'plan_id=' %}
-{% assign planId = params[1] %}
-
-
-
-<input type="hidden" id="cinstance_plan_id" name="application[plan_id]" value="{{ planId }}" />
+<input type="hidden" id="cinstance_plan_id" name="application[plan_id]" value="{{ application.plan.id }}" />
 
 <fieldset>
-  <div class="form-group" id="selected-plan" data-plan-id="{{ planId }}">
+  <div class="form-group" id="selected-plan" data-plan-id="{{ application.plan.id }}">
     <label class="control-label col-md-4">Plan</label>
     <div class="col-md-6">
 
@@ -33,7 +28,3 @@
 </fieldset>
 
 {% include 'new_application_licence' %}
-
-
-
-

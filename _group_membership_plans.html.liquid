@@ -56,9 +56,9 @@
                             <div class="col-md-12">
                               
                               {% if service.subscription %}
-                                <button type="button" class="btn btn-success pull-right" onclick="subscribeApp('{{plan.service.system_name}}', '{{plan.id}}')">Signup to plan {{ plan.name }}</button>
+                                <a type="button" class="btn btn-success pull-right" href="{{urls.new_application}}?service_id={{service.system_name}}&amp;application[plan_id]={{plan.id}}">Signup to plan {{ plan.name }}</a>
                               {% else %}
-                                <a href="/admin/service_contracts/new?service_id={{service.id}}" class="btn btn-success pull-right">Subscribe to the {{ service.name }} service</a>
+                                <a href="{{urls.service_subscription}}?service_id={{service.id}}" class="btn btn-success pull-right">Subscribe to the {{ service.name }} service</a>
                               {% endif %}                                                      
                           </div>
                         </div>
@@ -83,9 +83,3 @@
         </div>
     </div>
 </section>
-<script>
-	function subscribeApp(serviceId, planId) {
-        window.location.href = '/admin/applications/new?service_id=' + serviceId + '&plan_id=' + planId;
-  }
-
-</script>
