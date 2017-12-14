@@ -1,6 +1,6 @@
 Dynamic 3scale Developer Portal signup templates
 ================================================
-There are 4 custom signup flows included in the [parent homepage](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-index-html-liquid). These flows are included into the homepage using Liquid tags such as `{% include 'partial name' %}` because the flows are separated out into individual partials. The partials can be included in your 3scale portal individually or all together depending on which flows you want to enable in your portal and for ease of switching between flows as and when needed.
+There are 4 custom signup flows included in the [parent homepage](https://github.com/kevprice83/Custom-signup-flows-3scale-Dev-portal/blob/master/index.html.liquid). These flows are included into the homepage using Liquid tags such as `{% include 'partial name' %}` because the flows are separated out into individual partials. The partials can be included in your 3scale portal individually or all together depending on which flows you want to enable in your portal and for ease of switching between flows as and when needed.
 
 **NOTE:** If you prefer you can create a separate page to render the subscription forms to the different Services. This would be particularly useful if you want to allow multiple applications per account for the *Custom Field & Group Membership Flows*.
 
@@ -31,11 +31,11 @@ The Account object can be subscribed to many Services in 3scale and is able to a
 The Signup Flows
 ----------------
 ### Single Application Flow
-This is the simplest signup flow that only allows a signup to a single Service and Application Plan upon account creation. No features need to be enabled in the 3scale Developer portal to use this flow. Just include the [single app partial](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-_single_app_signup_form-html-liquid) from your [homepage](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-index-html-liquid) with: `{% include '<PARTIAL_NAME>' %}`.
+This is the simplest signup flow that only allows a signup to a single Service and Application Plan upon account creation. No features need to be enabled in the 3scale Developer portal to use this flow. Just include the [single app partial](https://github.com/kevprice83/Custom-signup-flows-3scale-Dev-portal/blob/master/_single_app_signup_form.html.liquid) from your [homepage](https://github.com/kevprice83/Custom-signup-flows-3scale-Dev-portal/blob/master/index.html.liquid) with: `{% include '<PARTIAL_NAME>' %}`.
 
 ### Multiple Application Flow
-This is a fairly simple signup flow that allows any public users to signup directly to multiple services and the associated Application Plans in just one sign up form. The user does not need an account prior to the signup as we want the Services to be publicly available. The Multiple Applications feature -- *Developer portal > Feature visibility* -- needs to be enabled on the Developer portal to use this flow. Use the [multiple apps partial](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-_mulitple_app_signup_form-html-liquid) and call it from the 
-[homepage](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-index-html-liquid) as so: `{% include '<PARTIAL_NAME>' %}`.
+This is a fairly simple signup flow that allows any public users to signup directly to multiple services and the associated Application Plans in just one sign up form. The user does not need an account prior to the signup as we want the Services to be publicly available. The Multiple Applications feature -- *Developer portal > Feature visibility* -- needs to be enabled on the Developer portal to use this flow. Use the [multiple apps partial](https://github.com/kevprice83/Custom-signup-flows-3scale-Dev-portal/blob/master/_mulitple_app_signup_form.html.liquid) and call it from the 
+[homepage](https://github.com/kevprice83/Custom-signup-flows-3scale-Dev-portal/blob/master/index.html.liquid) as so: `{% include '<PARTIAL_NAME>' %}`.
 
 ### Custom Field Flow
 This flow is useful when you want to control the Services a user can see or subscribe to. Imagine a simple scenario where there are 3 categories of APIs that are being managed through 3scale; Public, Private & Internal. The user could be limited to only have the ability to request to subscribe to a Service through some Admin portal settings. However, that then leaves some manual work on the API Provider side to be done every time the user wants to change to another Service or subscribe to a new Service. This isn't easy to maintain if many Services are being published on a frequent basis and with a growing Developer community the Devloper portal needs to remain scalable & manageable.
@@ -44,7 +44,7 @@ To use this flow a custom field on the Account object will need to be defined wi
 
 **NOTE:** If you do automate that part it's recommended to enable the "Account approval required" checkbox for added security measures. This can be done at *Settings > General > Signup*. 
 
-The final step is to include the [custom fields partial](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-_custom_field_plans-html-liquid) in the 3scale CMS and call it with the Liquid tag: `{% include '<PARTIAL_NAME>' %}` from the [homepage](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-index-html-liquid) and also update the *applications/form* partial in the 3scale CMS with the [form partial](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-form-html-liquid).
+The final step is to include the [custom fields partial](https://github.com/kevprice83/Custom-signup-flows-3scale-Dev-portal/blob/master/_custom_field_plans.html.liquid) in the 3scale CMS and call it with the Liquid tag: `{% include '<PARTIAL_NAME>' %}` from the [homepage](https://github.com/kevprice83/Custom-signup-flows-3scale-Dev-portal/blob/master/index.html.liquid).
 
 ### Group Membership Flow
 This flow is most useful when like in the Custom Fields Flow you want to control the access to Services and in addition you want to create sections of content that can only be accessed by those users with the correct permissions. This flow also requires a user to have signed up to create an account previously. None of the Services or Plans are exposed publicly. The account will be approved by an admin of the API provider team and subsequently assigned the appropriate Group Membership. This will in turn expose the relevant APIs and their plans on the homepage for subscription. To enable this flow a series of steps must be followed.
@@ -53,7 +53,7 @@ This flow is most useful when like in the Custom Fields Flow you want to control
 - Create a Feature in each of the Services' default Service Plan that denotes the "category" of the API, `public, private, internal` were the examples we used earlier.
 - Create a new Section for each Group under *Developer portal > Content* and select "New section" from the dropdown menu. Set the partial path to something that would also be contained as a substring of the Feature `system_name` created previously. It is the string values of these two attributes that will be compared to control the subscription forms the user is presented with.
 
-Finally include the [group membership partial](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-_group_membership_plans-html-liquid) in the 3scale CMS and as with the previous flows call it from the homepage.
+Finally include the [group membership partial](https://github.com/kevprice83/Custom-signup-flows-3scale-Dev-portal/blob/master/_group_membership_plans.html.liquid) in the 3scale CMS and as with the previous flows call it from the homepage.
 
 Additional points
 -----------------
@@ -62,16 +62,7 @@ Additional points
 These templates can be used in conjunction with one another if you're demoing the 3scale Developer Portal and the potential it has. Having the 4 different flows extracted into separate partials makes it very easy to manage and once the test Account & User is set up for demo purposes this should result in a very easy to execute demo.
 
 ### JavaScript functions
-There are some custom snippets of JavaScript in a few of the templates also. 
-The following function `subscribeApp` passes the necessary parameters to the *application new form* so that the Application can be created directly after the Plan is selected. The default behaviour otherwise would be then to redirect the user to select the Service under which they want to create the Application.
-
-```
-function subscribeApp(serviceId, planId) {
-      window.location.href = '/admin/applications/new?service_id=' + serviceId + '&plan_id=' + planId;
-}
-```
-
-`redirectUser` function is required to redirect from the [applications index page](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-_applications_index-html-liquid) to the page defined in the function on the [layout template](https://gist.github.com/kevprice83/5c673c074fde190771e06967bf8ae232#file-l_main_layout-html-liquid). When a User first logs in the portal redirects them to the *applications index* view but if they haven't created any Application(s) yet this will feel a bit broken or strange and this custom redirect improves the UX a little.
+There is only one custom JavaScript function that you need to use; `redirectUser`. This function redirects the user from the [applications index page](https://github.com/kevprice83/Custom-signup-flows-3scale-Dev-portal/blob/master/_applications_index.html.liquid) to the page defined in the function on the [layout template](https://github.com/kevprice83/Custom-signup-flows-3scale-Dev-portal/blob/master/l_main_layout.html.liquid). When a User first logs in the portal redirects them to the *applications index* view but if they haven't created any Application(s) yet this will feel a bit broken or strange and this custom redirect improves the UX a little.
 
 ```
 function redirectUser() {
